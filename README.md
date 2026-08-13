@@ -1,6 +1,6 @@
 # Prompt Optimizer
 
-A Spring Boot 3.3 web application that takes a user's prompt, optimizes it via the OpenAI API (GPT-4o-mini), and returns suggestions and a clarity score.
+A  web application that takes a user's prompt, optimizes , and returns suggestions and a clarity score.
 
 ## Features
 
