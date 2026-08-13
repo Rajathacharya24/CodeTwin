@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Optimize your prompts with advanced AI suggestions.">
+    <title>Prompt Optimizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --primary-color: #3b82f6;
+            --primary-hover: #2563eb;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.8s ease-out;
+            margin-bottom: 2rem;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            padding: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+
+        button {
+            display: inline-block;
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        button:disabled {
+            background-color: var(--border-color);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Results Section */
+        #results {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .result-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .result-group h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: #cbd5e1;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .optimized-text {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+
+        .score-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .score-high { background-color: rgba(16, 185, 129, 0.2); color: var(--success-color); }
+        .score-med { background-color: rgba(245, 158, 11, 0.2); color: var(--warning-color); }
+        .score-low { background-color: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+        .suggestion-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .suggestion-item {
+            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .suggestion-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: #c084fc;
+        }
+
+        .suggestion-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #c084fc;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .suggestion-issue {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #f1f5f9;
+        }
+
+        .suggestion-fix {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .error-message {
+            color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .loader {
+            display: none;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border-top: 3px solid var(--primary-color);
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Prompt Optimizer</h1>
+            <p class="subtitle">Elevate your AI prompts to the next level</p>
+        </header>
+
+        <main class="card">
+            <textarea id="promptInput" placeholder="Enter your prompt here to optimize..."></textarea>
+            <div id="errorBox" class="error-message"></div>
+            <button id="optimizeBtn">
+                <span id="btnText">Optimize Prompt</span>
+                <div id="loader" class="loader"></div>
+            </button>
+        </main>
+
+        <section id="results" class="card">
+            <div class="result-group">
+                <h2>Clarity Score</h2>
+                <div id="clarityScore" class="score-badge"></div>
+            </div>
+
+            <div class="result-group">
+                <h2>Optimized Prompt</h2>
+                <div id="optimizedPrompt" class="optimized-text"></div>
+            </div>
+
+            <div class="result-group">
+                <h2>Suggestions</h2>
+                <ul id="suggestionList" class="suggestion-list"></ul>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const promptInput = document.getElementById('promptInput');
+        const optimizeBtn = document.getElementById('optimizeBtn');
+        const btnText = document.getElementById('btnText');
+        const loader = document.getElementById('loader');
+        const errorBox = document.getElementById('errorBox');
+        const results = document.getElementById('results');
+        const clarityScoreEl = document.getElementById('clarityScore');
+        const optimizedPromptEl = document.getElementById('optimizedPrompt');
+        const suggestionList = document.getElementById('suggestionList');
+
+        // Allow interacting from different port if testing, otherwise relative path
+        const API_URL = '/api/prompts/optimize';
+
+        optimizeBtn.addEventListener('click', async () => {
+            const prompt = promptInput.value.trim();
+            
+            if (!prompt) {
+                showError("Please enter a prompt to optimize.");
+                return;
+            }
+
+            if (prompt.length > 5000) {
+                showError("Prompt must be less than 5000 characters.");
+                return;
+            }
+
+            setLoading(true);
+            hideError();
+            results.style.display = 'none';
+
+            try {
+                // If testing locally directly from file, point to http://localhost:8080/api/prompts/optimize
+                const apiUrl = window.location.protocol === 'file:' 
+                    ? 'http://localhost:8080/api/prompts/optimize' 
+                    : API_URL;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt })
+                });
+
+                if (!response.ok) {
+                    const data = await response.json();
+                    throw new Error(data.error || data.prompt || "An error occurred optimizing the prompt.");
+                }
+
+                const data = await response.json();
+                displayResults(data);
+            } catch (err) {
+                showError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        function setLoading(isLoading) {
+            optimizeBtn.disabled = isLoading;
+            if (isLoading) {
+                btnText.style.display = 'none';
+                loader.style.display = 'block';
+            } else {
+                btnText.style.display = 'block';
+                loader.style.display = 'none';
+            }
+        }
+
+        function showError(msg) {
+            errorBox.textContent = msg;
+            errorBox.style.display = 'block';
+        }
+
+        function hideError() {
+            errorBox.style.display = 'none';
+        }
+
+        function displayResults(data) {
+            // Render Clarity Score
+            clarityScoreEl.textContent = `${data.clarityScore} / 10`;
+            clarityScoreEl.className = 'score-badge';
+            if (data.clarityScore >= 8) clarityScoreEl.classList.add('score-high');
+            else if (data.clarityScore >= 5) clarityScoreEl.classList.add('score-med');
+            else clarityScoreEl.classList.add('score-low');
+
+            // Render Optimized Prompt
+            optimizedPromptEl.textContent = data.optimizedPrompt;
+
+            // Render Suggestions
+            suggestionList.innerHTML = '';
+            if (data.suggestions && data.suggestions.length > 0) {
+                data.suggestions.forEach(s => {
+                    const li = document.createElement('li');
+                    li.className = 'suggestion-item';
+                    
+                    const cat = document.createElement('span');
+                    cat.className = 'suggestion-category';
+                    cat.textContent = s.category;
+
+                    const issue = document.createElement('div');
+                    issue.className = 'suggestion-issue';
+                    issue.textContent = `Issue: ${s.issue}`;
+
+                    const fix = document.createElement('div');
+                    fix.className = 'suggestion-fix';
+                    fix.textContent = `Fix: ${s.fix}`;
+
+                    li.appendChild(cat);
+                    li.appendChild(issue);
+                    li.appendChild(fix);
+                    suggestionList.appendChild(li);
+                });
+            } else {
+                suggestionList.innerHTML = '<li class="suggestion-item"><div class="suggestion-fix">No suggestions. Your prompt is already great!</div></li>';
+            }
+
+            results.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
