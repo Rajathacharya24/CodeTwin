@@ -4,7 +4,7 @@ A  web application that takes a user's prompt, optimizes , and returns suggestio
 
 ## Features
 
-- **Spring Boot 3.3 & Java 21**: Modern backend setup.
+- **Spring Boot 4.x & Java 21**: Modern backend setup.
 - **Spring WebClient**: Reactive client to communicate with the OpenAI API.
 - **Caffeine Cache**: In-memory caching so duplicate prompts do not result in extra LLM API calls.
 - **Frontend**: A sleek, dark-mode inspired UI using Vanilla CSS and JavaScript, directly served by Spring Boot.
