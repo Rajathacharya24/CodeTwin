@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.rajath.promptoptimizer.service.PromptOptimizationServiceTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.529 s -- in com.rajath.promptoptimizer.service.PromptOptimizationServiceTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.790 s -- in com.rajath.promptoptimizer.service.PromptOptimizationServiceTest
