@@ -15,6 +15,7 @@ public class LlmClient {
         this.llmWebClient = llmWebClient;
     }
 
+    @SuppressWarnings("unchecked")
     public String getChatCompletion(String systemPrompt, String userPrompt) {
         Map<String, Object> requestBody = Map.of(
                 "model", "gpt-4o-mini",

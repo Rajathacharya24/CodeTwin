@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
 
 @Service
 public class PromptOptimizationService {
@@ -20,7 +19,7 @@ public class PromptOptimizationService {
             "{\n" +
             "  \"optimizedPrompt\": \"...\",\n" +
             "  \"suggestions\": [{\"issue\": \"...\", \"fix\": \"...\", \"category\": \"clarity|specificity|structure|context|format\"}],\n" +
-            "  \"clarityScore\": 1-10\n" +
+            "  \"clarityScore\": 8\n" +
             "}\n";
 
     private final LlmClient llmClient;
