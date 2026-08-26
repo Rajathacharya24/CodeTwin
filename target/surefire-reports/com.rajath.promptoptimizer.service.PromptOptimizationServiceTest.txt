@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.rajath.promptoptimizer.service.PromptOptimizationServiceTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.224 s <<< FAILURE! -- in com.rajath.promptoptimizer.service.PromptOptimizationServiceTest
-com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_FailureOnRetry -- Time elapsed: 0.079 s <<< ERROR!
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.230 s <<< FAILURE! -- in com.rajath.promptoptimizer.service.PromptOptimizationServiceTest
+com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_FailureOnRetry -- Time elapsed: 0.077 s <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.rajath.promptoptimizer.client.LlmClient.
@@ -83,7 +83,7 @@ Caused by: java.lang.IllegalArgumentException: Java 25 (69) is not supported by 
 	at org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator.triggerRetransformation(InlineBytecodeGenerator.java:281)
 	... 27 more
 
-com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_WithMarkdownFences -- Time elapsed: 0.038 s <<< ERROR!
+com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_WithMarkdownFences -- Time elapsed: 0.039 s <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.rajath.promptoptimizer.client.LlmClient.
@@ -164,7 +164,7 @@ Caused by: java.lang.IllegalArgumentException: Java 25 (69) is not supported by 
 	at org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator.triggerRetransformation(InlineBytecodeGenerator.java:281)
 	... 27 more
 
-com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_RetryOnInvalidJson -- Time elapsed: 0.037 s <<< ERROR!
+com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_RetryOnInvalidJson -- Time elapsed: 0.033 s <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.rajath.promptoptimizer.client.LlmClient.
@@ -245,7 +245,7 @@ Caused by: java.lang.IllegalArgumentException: Java 25 (69) is not supported by 
 	at org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator.triggerRetransformation(InlineBytecodeGenerator.java:281)
 	... 27 more
 
-com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_Success -- Time elapsed: 0.034 s <<< ERROR!
+com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_Success -- Time elapsed: 0.031 s <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.rajath.promptoptimizer.client.LlmClient.
