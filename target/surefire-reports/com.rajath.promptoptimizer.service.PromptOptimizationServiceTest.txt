@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.rajath.promptoptimizer.service.PromptOptimizationServiceTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.282 s <<< FAILURE! -- in com.rajath.promptoptimizer.service.PromptOptimizationServiceTest
-com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_FailureOnRetry -- Time elapsed: 0.074 s <<< ERROR!
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.224 s <<< FAILURE! -- in com.rajath.promptoptimizer.service.PromptOptimizationServiceTest
+com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_FailureOnRetry -- Time elapsed: 0.079 s <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.rajath.promptoptimizer.client.LlmClient.
@@ -15,7 +15,7 @@ JVM vendor name    : Red Hat, Inc.
 JVM vendor version : 25.0.4+7
 JVM name           : OpenJDK 64-Bit Server VM
 JVM version        : 25.0.4+7
-JVM info           : mixed mode, sharing
+JVM info           : mixed mode
 OS name            : Linux
 OS version         : 7.1.9-200.fc44.x86_64
 
@@ -23,14 +23,14 @@ OS version         : 7.1.9-200.fc44.x86_64
 You are seeing this disclaimer because Mockito is configured to create inlined mocks.
 You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
 
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class com.rajath.promptoptimizer.client.LlmClient, class java.lang.Object]
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.rajath.promptoptimizer.client.LlmClient]
 	at org.mockito.junit.jupiter.MockitoExtension.beforeEach(MockitoExtension.java:160)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	Suppressed: java.lang.NullPointerException: Cannot invoke "java.util.Set.forEach(java.util.function.Consumer)" because the return value of "org.junit.jupiter.api.extension.ExtensionContext$Store.remove(Object, java.lang.Class)" is null
 		at org.mockito.junit.jupiter.MockitoExtension.afterEach(MockitoExtension.java:194)
 		... 2 more
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class com.rajath.promptoptimizer.client.LlmClient, class java.lang.Object]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.rajath.promptoptimizer.client.LlmClient]
 	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:168)
 	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:399)
 	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:190)
@@ -83,7 +83,7 @@ Caused by: java.lang.IllegalArgumentException: Java 25 (69) is not supported by 
 	at org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator.triggerRetransformation(InlineBytecodeGenerator.java:281)
 	... 27 more
 
-com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_WithMarkdownFences -- Time elapsed: 0.074 s <<< ERROR!
+com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_WithMarkdownFences -- Time elapsed: 0.038 s <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.rajath.promptoptimizer.client.LlmClient.
@@ -96,7 +96,7 @@ JVM vendor name    : Red Hat, Inc.
 JVM vendor version : 25.0.4+7
 JVM name           : OpenJDK 64-Bit Server VM
 JVM version        : 25.0.4+7
-JVM info           : mixed mode, sharing
+JVM info           : mixed mode
 OS name            : Linux
 OS version         : 7.1.9-200.fc44.x86_64
 
@@ -104,14 +104,14 @@ OS version         : 7.1.9-200.fc44.x86_64
 You are seeing this disclaimer because Mockito is configured to create inlined mocks.
 You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
 
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class com.rajath.promptoptimizer.client.LlmClient, class java.lang.Object]
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.rajath.promptoptimizer.client.LlmClient]
 	at org.mockito.junit.jupiter.MockitoExtension.beforeEach(MockitoExtension.java:160)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	Suppressed: java.lang.NullPointerException: Cannot invoke "java.util.Set.forEach(java.util.function.Consumer)" because the return value of "org.junit.jupiter.api.extension.ExtensionContext$Store.remove(Object, java.lang.Class)" is null
 		at org.mockito.junit.jupiter.MockitoExtension.afterEach(MockitoExtension.java:194)
 		... 2 more
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class com.rajath.promptoptimizer.client.LlmClient, class java.lang.Object]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.rajath.promptoptimizer.client.LlmClient]
 	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:168)
 	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:399)
 	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:190)
@@ -164,7 +164,7 @@ Caused by: java.lang.IllegalArgumentException: Java 25 (69) is not supported by 
 	at org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator.triggerRetransformation(InlineBytecodeGenerator.java:281)
 	... 27 more
 
-com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_RetryOnInvalidJson -- Time elapsed: 0.044 s <<< ERROR!
+com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_RetryOnInvalidJson -- Time elapsed: 0.037 s <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.rajath.promptoptimizer.client.LlmClient.
@@ -177,7 +177,7 @@ JVM vendor name    : Red Hat, Inc.
 JVM vendor version : 25.0.4+7
 JVM name           : OpenJDK 64-Bit Server VM
 JVM version        : 25.0.4+7
-JVM info           : mixed mode, sharing
+JVM info           : mixed mode
 OS name            : Linux
 OS version         : 7.1.9-200.fc44.x86_64
 
@@ -185,14 +185,14 @@ OS version         : 7.1.9-200.fc44.x86_64
 You are seeing this disclaimer because Mockito is configured to create inlined mocks.
 You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
 
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class com.rajath.promptoptimizer.client.LlmClient, class java.lang.Object]
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.rajath.promptoptimizer.client.LlmClient]
 	at org.mockito.junit.jupiter.MockitoExtension.beforeEach(MockitoExtension.java:160)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	Suppressed: java.lang.NullPointerException: Cannot invoke "java.util.Set.forEach(java.util.function.Consumer)" because the return value of "org.junit.jupiter.api.extension.ExtensionContext$Store.remove(Object, java.lang.Class)" is null
 		at org.mockito.junit.jupiter.MockitoExtension.afterEach(MockitoExtension.java:194)
 		... 2 more
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class com.rajath.promptoptimizer.client.LlmClient, class java.lang.Object]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.rajath.promptoptimizer.client.LlmClient]
 	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:168)
 	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:399)
 	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:190)
@@ -245,7 +245,7 @@ Caused by: java.lang.IllegalArgumentException: Java 25 (69) is not supported by 
 	at org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator.triggerRetransformation(InlineBytecodeGenerator.java:281)
 	... 27 more
 
-com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_Success -- Time elapsed: 0.033 s <<< ERROR!
+com.rajath.promptoptimizer.service.PromptOptimizationServiceTest.optimizePrompt_Success -- Time elapsed: 0.034 s <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.rajath.promptoptimizer.client.LlmClient.
@@ -258,7 +258,7 @@ JVM vendor name    : Red Hat, Inc.
 JVM vendor version : 25.0.4+7
 JVM name           : OpenJDK 64-Bit Server VM
 JVM version        : 25.0.4+7
-JVM info           : mixed mode, sharing
+JVM info           : mixed mode
 OS name            : Linux
 OS version         : 7.1.9-200.fc44.x86_64
 
@@ -266,14 +266,14 @@ OS version         : 7.1.9-200.fc44.x86_64
 You are seeing this disclaimer because Mockito is configured to create inlined mocks.
 You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
 
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class com.rajath.promptoptimizer.client.LlmClient, class java.lang.Object]
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.rajath.promptoptimizer.client.LlmClient]
 	at org.mockito.junit.jupiter.MockitoExtension.beforeEach(MockitoExtension.java:160)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	Suppressed: java.lang.NullPointerException: Cannot invoke "java.util.Set.forEach(java.util.function.Consumer)" because the return value of "org.junit.jupiter.api.extension.ExtensionContext$Store.remove(Object, java.lang.Class)" is null
 		at org.mockito.junit.jupiter.MockitoExtension.afterEach(MockitoExtension.java:194)
 		... 2 more
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class com.rajath.promptoptimizer.client.LlmClient, class java.lang.Object]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.rajath.promptoptimizer.client.LlmClient]
 	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:168)
 	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:399)
 	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:190)
